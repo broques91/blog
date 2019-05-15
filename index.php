@@ -29,17 +29,19 @@
 
             while($donnees = $reponse->fetch()){
                 ?>
-                <div class="card mx-auto shadow-sm" style="width: 30rem;">
-                    <div class="card-header">
-                        <h5 class="card-title"> <?php echo htmlspecialchars($donnees['titre']) ?> </h3>
-                        <h6 class="card-subtitle mb-2 text-muted">Posté le <?php echo ($donnees['date_creation_fr']) ?> </h6>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text"> <?php echo htmlspecialchars($donnees['contenu']) ?> </p>
-                        <!-- Lien vers les commentaires du billet -->
-                        <a href="commentaires.php?billet=<?php echo ($donnees['id']); ?>" class="card-link">Commentaires</a>
-                    </div>
-                </div>  
+                <div class="col-md-6 mx-auto">
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <h5 class="card-title"> <?php echo htmlspecialchars($donnees['titre']) ?> </h3>
+                            <h6 class="card-subtitle mb-2 text-muted">Posté le <?php echo ($donnees['date_creation_fr']) ?> </h6>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text"> <?php echo htmlspecialchars($donnees['contenu']) ?> </p>
+                            <!-- Lien vers les commentaires du billet -->
+                            <a href="commentaires.php?billet=<?php echo ($donnees['id']); ?>" class="card-link">Commentaires</a>
+                        </div>
+                    </div>  
+                </div>
             <?php     
             }
             $reponse->closeCursor();?>
