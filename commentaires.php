@@ -22,6 +22,7 @@
 
             $donnees = $reponse->fetch();
             
+            // Si le tableau de donnees n'est pas vide = si le billet existe
             if(!empty($donnees)){
             ?>
                 <div class="col-md-6 mx-auto">
@@ -36,10 +37,11 @@
                     </div>  
                 </div>
             <?php
+            //Sinon = le billet n'existe pas
             }else{
-                header('Location: 404.php');
-            }
-            
+                header('Location: 404.php'); // Redirection page d'erreur 404
+
+            }  
             $reponse->closeCursor();?>
 
             <h2 class="mt-5 mb-4">Commentaires</h2>

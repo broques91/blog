@@ -15,8 +15,36 @@
                     die('Erreur : '.$e->getMessage());
             }
 
-            // Affichage des 5 derniers billets
-            $reponse = $bdd->query('SELECT id, titre, contenu, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr FROM billets ORDER BY date_creation DESC LIMIT 0, 5');
+            // Nombre de billets par page
+            $nbBilletsParPage = 2;
+            
+            // Récupération du nombre total de billets
+            $reponse = $bdd->query('SELECT COUNT(*) AS nb_billets FROM billets');
+            $donnees = $reponse->fetch();
+            $nbTotalBillets = $donnees['nb_billets'];
+
+            // Calcul du nombre de pages
+            $nbPages = ceil($nbTotalBillets / $nbBilletsParPage);
+
+            // Si la variable $_GET['page'] existe...
+            if(isset($_GET['page'])) {
+                $pageActuelle = intval($_GET['page']);
+                
+                // Si la valeur de $pageActuelle (le numéro de la page) est plus grande que $nbPages...
+                if($pageActuelle > $nbPages) {
+                    $pageActuelle = $nbPages;
+                }
+            }else{
+                $pageActuelle = 1; // La page actuelle est la n°1
+            }    
+
+            // Calcul du premier billet à afficher
+            $premierBillet = ($pageActuelle-1) * $nbBilletsParPage; 
+
+            $reponse->closeCursor();
+
+            // Affichage des 2 derniers billets
+            $reponse = $bdd->query('SELECT id, titre, contenu, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr FROM billets ORDER BY date_creation DESC LIMIT '. $premierBillet .', '. $nbBilletsParPage .'');
 
             while($donnees = $reponse->fetch()){
                 ?>
@@ -36,8 +64,26 @@
                 </div>
             <?php     
             }
-            $reponse->closeCursor();?>
+            $reponse->closeCursor();
 
+        // Pagination
+        ?>
+        <div class="mx-auto">
+            <p class="text-center">
+            <?php
+            for($i = 1; $i <= $nbPages; $i++) 
+            {
+                // Si il s'agit de la page actuelle...
+                if($i == $pageActuelle) {
+                    echo ' [ '.$i.' ] '; 
+                }else{
+                    echo ' <a href="index.php?page='.$i.'">'.$i.'</a> ';
+                }
+            }
+            ?>
+            </p>
+        </div>
+        
     </div>
 
     <?php require('inc/scripts.php'); ?>  
