@@ -8,5 +8,8 @@ a{text-decoration: none;}
     margin: 30px 0;
 }
 
+.page-wrap {
+    min-height: 100vh;
+}
 
 

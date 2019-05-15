@@ -20,8 +20,10 @@
             $reponse = $bdd->prepare('SELECT titre, contenu, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr FROM billets WHERE id = ?');
             $reponse->execute(array($_GET['billet']));
 
-            while ($donnees = $reponse->fetch()){
-                ?>
+            $donnees = $reponse->fetch();
+            
+            if(!empty($donnees)){
+            ?>
                 <div class="col-md-6 mx-auto">
                     <div class="card shadow-sm">
                         <div class="card-header">
@@ -34,7 +36,10 @@
                     </div>  
                 </div>
             <?php
+            }else{
+                header('Location: 404.php');
             }
+            
             $reponse->closeCursor();?>
 
             <h2 class="mt-5 mb-4">Commentaires</h2>
