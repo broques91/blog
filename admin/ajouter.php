@@ -45,10 +45,12 @@ require('../inc/head.php');
                 // Redirection vers la page d'accueil
                 header('Location: ../index.php');
             }else{
+                if(isset($titre) && $titre == "" && isset($contenu) && $contenu == ""){
                 ?>
-                <p class="mt-3">*Veuillez remplir tous les champs</p>
+                <p class="text-danger mt-3">*Veuillez remplir tous les champs</p>
                 <?php
-}
+                }
+            }
             ?>
     </div>
 
