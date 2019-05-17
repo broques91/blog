@@ -7,15 +7,19 @@ require('../inc/head.php');
         <h1 class="my-3 text-center">Mon super blog en PHP</h1>
         <h2>Ajouter un billet</h2>
 
-        <form action="ajouter.php" method="post">
-                Titre* <br>
-                <input type="text" name="titre" id="title" value="">
-                <p>
-                Contenu* <br>
-                <textarea rows="10" cols="50" name="contenu" id="content"></textarea>
-                </p>
-                <input type="submit" value="Enregistrer">
-        </form>
+        <div class="col-md-6 mx-auto">
+            <form action="ajouter.php" method="post">
+                <div class="form-group">
+                    <label for="title">Titre*</label>
+                    <input type="text" name="titre" id="title" class="form-control" value="">
+                </div>
+                <div class="form-group">
+                    <label for="content">Contenu*</label>
+                    <textarea rows="10" cols="50" name="contenu" id="content" class="form-control"></textarea>
+                </div>
+                    <button type="submit" class="btn btn-primary btn-block">Enregistrer</button>
+            </form>
+        </div>
 
         <?php
             // Connexion à la base de données
