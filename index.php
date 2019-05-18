@@ -60,6 +60,7 @@
                             <!-- Lien vers les commentaires du billet -->
                             <a href="commentaires.php?billet=<?php echo ($donnees['id']); ?>" class="card-link">Commentaires</a>
                             <a href="admin/modifier.php?billet=<?php echo ($donnees['id']); ?>" class="card-link">Modifier</a>
+                            <a href="admin/supprimer.php?billet=<?php echo ($donnees['id']); ?>" class="card-link">Supprimer</a>
 
                         </div>
                     </div>  

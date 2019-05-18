@@ -52,6 +52,9 @@ require('../inc/head.php');
                 'id'   => $_POST['id']
             ));
 
+            // Redirection vers la page d'accueil
+            header('Location: ../index.php');
+
             $reponse->closeCursor();
 
 
