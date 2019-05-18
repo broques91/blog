@@ -28,6 +28,7 @@ require('../inc/head.php');
             <!-- Formulaire pré-rempli -->
             <div class="col-md-6 mx-auto">
                 <form action="modifier.php" method="post">
+                    <input type="hidden" name="id" id="id" value="<?php echo $donnees['id']; ?>">
                     <div class="form-group">
                         <label for="title">Titre*</label>
                         <input type="text" class="form-control" name="titre" id="title" value="<?php echo $donnees['titre']?>">
@@ -41,13 +42,14 @@ require('../inc/head.php');
             </div>
 
             <?php
-            $reponse->closeCursor();
 
-            $reponse = $bdd->prepare("UPDATE billets SET titre = :titre, contenu = :contenu, date_creation = NOW() WHERE id = ?");
+
+            $reponse = $bdd->prepare("UPDATE billets SET titre = :titre, contenu = :contenu, date_creation = NOW() WHERE id = :id ");
 
             $reponse->execute(array(
                 'titre'     => $_POST['titre'],
-                'contenu'   => $_POST['contenu']
+                'contenu'   => $_POST['contenu'],
+                'id'   => $_POST['id']
             ));
 
             $reponse->closeCursor();

@@ -59,6 +59,8 @@
                             <p class="card-text"> <?php echo htmlspecialchars($donnees['contenu']) ?> </p>
                             <!-- Lien vers les commentaires du billet -->
                             <a href="commentaires.php?billet=<?php echo ($donnees['id']); ?>" class="card-link">Commentaires</a>
+                            <a href="admin/modifier.php?billet=<?php echo ($donnees['id']); ?>" class="card-link">Modifier</a>
+
                         </div>
                     </div>  
                 </div>
