@@ -4,6 +4,8 @@
 
         <h1 class="my-3">Mon super blog en PHP</h1>
 
+        <a href="admin/ajouter.php" class="card-link">Ajouter un billet</a>
+
         <?php
             // Connexion à la base de données
             try

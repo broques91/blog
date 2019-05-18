@@ -5,6 +5,7 @@ require('../inc/head.php');
    <div class="container">
 
         <h1 class="my-3 text-center">Mon super blog en PHP</h1>
+        <a href="../index.php">Retour</a>
         <h2>Ajouter un billet</h2>
 
         <div class="col-md-6 mx-auto">

@@ -5,6 +5,7 @@ require('../inc/head.php');
    <div class="container">
 
         <h1 class="my-3 text-center">Mon super blog en PHP</h1>
+        <a href="../index.php">Retour</a>
         <h2>Modifier le billet</h2>
 
         <?php
@@ -52,8 +53,7 @@ require('../inc/head.php');
                 'id'   => $_POST['id']
             ));
 
-            // Redirection vers la page d'accueil
-            header('Location: ../index.php');
+          
 
             $reponse->closeCursor();
 
